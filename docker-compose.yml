@@ -1,0 +1,30 @@
+version: '3'
+
+volumes:
+  mysql-data:
+    driver: local
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: eddris-mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=eddris
+      - MYSQL_DATABASE=eddris
+      - MYSQL_USER=eddris
+      - MYSQL_PASSWORD=eddris
+
+  app:
+    build: ./docker
+    container_name: eddris-app
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "8080:8080"
+      - "8083:8083"
+    links:
+      - mysql
