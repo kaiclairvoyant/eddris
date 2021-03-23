@@ -20,7 +20,7 @@ services:
 
   app:
     build: ./docker
-    container_name: eddris-app
+    container_name: eddris
     volumes:
       - .:/var/www/app
     ports:
