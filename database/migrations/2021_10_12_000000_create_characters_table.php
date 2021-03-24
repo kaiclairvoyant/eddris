@@ -12,14 +12,13 @@ class CreateCharactersTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('player_id');
             $table->string('name');
-            $table->string('class');
-            $table->unsignedTinyInteger('health')->default(100);
-            $table->unsignedTinyInteger('mana')->default(100);
-            $table->unsignedTinyInteger('stamina')->default(100);
+            $table->string('class')->default('novice');
+            $table->unsignedSmallInteger('health')->default(100);
+            $table->unsignedSmallInteger('mana')->default(100);
+            $table->unsignedSmallInteger('stamina')->default(100);
             $table->unsignedTinyInteger('strength');
             $table->unsignedTinyInteger('intelligence');
             $table->unsignedTinyInteger('dexterity');
-            $table->unsignedTinyInteger('endurance');
             $table->timestamps();
         });
     }
