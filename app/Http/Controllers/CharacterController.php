@@ -21,10 +21,6 @@ class CharacterController extends Controller
         //
     }
 
-    public function create()
-    {
-        //
-    }
 
     public function store(CharacterRequest$request)
     {
