@@ -16,11 +16,12 @@ class CharacterCreationTest extends TestCase
     {
         $character = Character::factory()->create()->toArray();
 
-        $response = $this->post(
-            '/characters',
+        $response = $this->postJson(
+            '/api/characters',
             $character
         );
 
+        dd($response->getOriginalContent());
         $response->assertStatus(201);
     }
 }
