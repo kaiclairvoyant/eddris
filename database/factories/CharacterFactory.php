@@ -12,8 +12,6 @@ class CharacterFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->uuid,
-            'player_id' => $this->faker->uuid,
             'name' => $this->faker->name,
             'health' => $this->faker->randomNumber(3),
             'mana' => $this->faker->randomNumber(3),

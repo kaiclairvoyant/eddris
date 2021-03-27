@@ -14,7 +14,6 @@ class CharacterRequest extends FormRequest
     public function rules()
     {
         return [
-            "player_id" => 'exists:players,id',
             "name" => 'string',
             "health" => 'integer',
             "mana" => 'integer',

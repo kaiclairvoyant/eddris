@@ -10,7 +10,6 @@ class CreateCharactersTable extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('player_id');
             $table->string('name');
             $table->string('class')->default('novice');
             $table->unsignedSmallInteger('health')->default(100);
