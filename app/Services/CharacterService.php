@@ -32,13 +32,13 @@ class CharacterService
         //
     }
 
-    public function update(Request $request, Character $character)
+    public function update(array $data, Character $character): bool
     {
-        //
+        return (bool) $character->update($data);
     }
 
-    public function destroy(Character $character)
+    public function destroy(Character $character): bool
     {
-        //
+        return (bool) $character->delete();
     }
 }

@@ -17,13 +17,15 @@ class CharacterCreationTest extends TestCase
         $character = Character::factory()->make()->toArray();
 
         $response = $this->postJson(
-            '/api/characters',
+            route('characters.store'),
             $character
         );
 
         $response->assertStatus(201);
 
         $response->assertJson($character);
+
+        $this->assertDatabaseHas('characters', $character);
     }
 
     public function testItCanUpdateCharacters()
@@ -33,12 +35,25 @@ class CharacterCreationTest extends TestCase
         $data = Character::factory()->make(['id' => $character['id']])->toArray();
 
         $response = $this->putJson(
-            '/api/characters',
+            route('characters.update', $character['id']),
             $data
         );
-dd($response->getOriginalContent()['message']);
-        $response->assertStatus(201);
 
-        $response->assertJson($character);
+        $response->assertStatus(204);
+
+        $this->assertDatabaseHas('characters', $data);
+    }
+
+    public function testItCanDeleteCharacters()
+    {
+        $character = Character::factory()->create()->toArray();
+
+        $response = $this->deleteJson(
+            route('characters.destroy', $character['id'])
+        );
+
+        $response->assertStatus(204);
+
+        $this->assertDatabaseMissing('characters', $character);
     }
 }
